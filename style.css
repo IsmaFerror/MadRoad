@@ -9,9 +9,15 @@ body {
 header {
     text-align: center;
     border-bottom: 2px solid #4A148C;
-    padding-bottom: 10px;
     margin-bottom: 30px;
-    margin-top: 25px;
+    position: relative;
+    min-height: 150px; 
+    padding-top: 20px;
+    padding-bottom: 20px;
+    box-sizing: border-box; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 h1 {
@@ -77,21 +83,20 @@ h1 {
 
 #logo {
     position: absolute;
-    left: 0; 
-    top: 0%; 
-    transform: translateY(-10%); 
-    margin-left: 15px;
+    /* (El 'left' y 'top' que querías) */
+    left: 20px; /* A 20px de la izquierda (igual que el menú a la derecha) */
+    top: 50%;   /* 50% desde arriba del header */
+    transform: translateY(-50%); /* Lo sube la mitad de su altura (centrado perfecto) */
 
-    height: 110px; 
-    
+    height: 110px; /* Tu tamaño para PC */
 }
 
 .menu-container {
     position: absolute;
-    right: 30px; /* Lo movemos a la derecha */
-    top: 4.8%;
-    transform: translateY(-50%);
+    right: 30px; /* Ajustado desde 20px para que no esté tan pegado */
     z-index: 100; /* Asegura que esté por encima */
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 .menu-icon {
@@ -194,4 +199,68 @@ h1 {
 
 .site-footer a:hover {
     text-decoration: underline;
+}
+
+
+
+/* Esto se aplica SOLO en pantallas de 768px o menos
+  (tablets y móviles)
+*/
+@media (max-width: 768px) {
+
+    header {
+        /* Reducimos la altura del header en móvil */
+        min-height: 80px; 
+        
+        /* Reducimos el padding para que coincida */
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    h1 {
+        /* Hacemos el título un poco más pequeño para balancear */
+        font-size: 1.3rem; 
+
+        /* Aumentamos el padding izquierdo para el logo de 50px */
+        padding-left: 90px;
+        
+        padding-right: 50px;
+        box-sizing: border-box;
+    }
+
+ 
+    #logo {
+        left: 15px;
+        
+        /* Aumentamos el tamaño, 35px era muy poco */
+        height: 55px; 
+        
+        top: 50%; 
+        transform: translateY(-50%);
+    }
+
+    .menu-container {
+        /* Acercamos el menú al borde */
+        right: 15px;
+    }
+    
+   
+    .traffic-list {
+        /* Evitamos que la lista ocupe todo el ancho */
+        max-width: 95%;
+        margin: 0 auto;
+    }
+    
+    .highway-item {
+        
+        font-size: 1rem;
+        padding: 12px 15px;
+    }
+
+    .highway-item .condition {
+        /* Reducimos el texto de "Fluido", etc. */
+        font-size: 0.9rem;
+        /* Evitamos que el texto "Congestionada" se parta en dos líneas */
+        white-space: nowrap;
+    }
 }
