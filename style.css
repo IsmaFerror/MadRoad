@@ -11,10 +11,12 @@ header {
     border-bottom: 2px solid #4A148C; /* Borde morado oscuro */
     padding-bottom: 10px;
     margin-bottom: 30px;
+    margin-top: 25px;
 }
 
 h1 {
     color: #9B59B6; /* Morado más brillante para el título */
+     margin: 0; /*quitamos margenes por defecto */
 }
 
 .traffic-list {
@@ -71,4 +73,16 @@ h1 {
 
 .status-dot.grey {
     background-color: #555;
+}
+
+#logo {
+    /* Posicionamos el logo de forma absoluta */
+    position: absolute;
+    left: 0; /* Lo pegamos a la izquierda del header */
+    top: 0%; /* Lo centramos verticalmente */
+    transform: translateY(-10%); /* Ajuste fino de la posición vertical */
+    margin-left: 10px;
+    /* Ajusta el tamaño a tu gusto */
+    height: 110px; 
+    /* width: 50px; (opcional, si quieres que sea cuadrado) */
 }
