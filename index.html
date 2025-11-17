@@ -9,17 +9,34 @@
 </head>
 <body>
     <header>
+        <div class="menu-container">
+            <input type="checkbox" id="menu-toggle">
+            
+            <label for="menu-toggle" class="menu-icon">
+                <span></span> <span></span> <span></span> </label>
+            
+            <nav class="menu-dropdown">
+                <ul>
+                    <li><a href="https://ismaferror.github.io/portfolio/" target="_blank">✦ Mi Perfil ✦</a></li>
+                </ul>
+            </nav>
+        </div>
+
         <h1>Estado del Tráfico en Madrid</h1>
     </header>
     
     <main class="traffic-list" id="traffic-list-container">
         
     </main>
+    <footer class="site-footer">
+        <p>&copy; 2025 MadRoad | Creado por Ismael  </p>
+        <p>
+            Datos de tráfico proporcionados por 
+            <a href="https://www.google.com/maps" target="_blank">Google Maps Platform</a>.
+        </p>
+    </footer>
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDdJ0wyeOiplV5IfD-k9W4tdvtHd1_cFi8&libraries=geometry"></script>
-
-    
-
     <script src="app.js"></script>
 </body>
 </html>
