@@ -81,7 +81,7 @@ h1 {
     left: 0; /* Lo pegamos a la izquierda del header */
     top: 0%; /* Lo centramos verticalmente */
     transform: translateY(-10%); /* Ajuste fino de la posición vertical */
-    margin-left: 10px;
+    margin-left: 15px;
     /* Ajusta el tamaño a tu gusto */
     height: 110px; 
     /* width: 50px; (opcional, si quieres que sea cuadrado) */
