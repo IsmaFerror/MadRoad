@@ -4,34 +4,77 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- 1. Definición de las Autopistas ---
     // Para CADA autopista, necesitamos un punto de origen y uno de destino
     // para que Google pueda calcular la ruta.
-    // Puedes añadir todas las que quieras aquí.
-    const highways = [
-        {
-            id: 'm30-sur',
-            name: 'M-30 (Sur, Nudo Sur)',
-            origin: { lat: 40.3900, lng: -3.6902 }, // Coordenadas de P. Sta. Mª de la Cabeza
-            destination: { lat: 40.3950, lng: -3.6655 } // Coordenadas de Nudo Sur
-        },
-        {
-            id: 'a2-entrada',
-            name: 'A-2 (Entrada a Av. América)',
-            origin: { lat: 40.4355, lng: -3.6490 }, // Zona Canillejas
-            destination: { lat: 40.4320, lng: -3.6730 } // Av. de América
-        },
-        {
-            id: 'a6-entrada',
-            name: 'A-6 (Entrada a Moncloa)',
-            origin: { lat: 40.4630, lng: -3.7530 }, // Zona Puerta de Hierro
-            destination: { lat: 40.4360, lng: -3.7170 } // Zona Moncloa
-        },
-        {
-            id: 'm40-norte',
-            name: 'M-40 (Norte)',
-            origin: { lat: 40.4850, lng: -3.6880 }, // Zona Sanchinarro
-            destination: { lat: 40.4680, lng: -3.6100 } // Zona Feria de Madrid
-        }
-        // ... Añade aquí el resto de autopistas (A1, A3, A4, A5, M45, etc.)
-    ];
+const highways = [
+    // --- CIRCUNVALACIONES (M-30, M-40, M-45, M-50) ---
+    {
+        id: 'm30-sur',
+        name: 'M-30 (Sur, Nudo Sur)',
+        origin: { lat: 40.3900, lng: -3.6902 }, // P. Sta. Mª de la Cabeza
+        destination: { lat: 40.3950, lng: -3.6655 } // Nudo Sur
+    },
+    {
+        id: 'm30-este',
+        name: 'M-30 (Este, Av. América)',
+        origin: { lat: 40.435, lng: -3.670 }, // Nudo Av. América
+        destination: { lat: 40.419, lng: -3.665 } // Nudo O'Donnell
+    },
+    {
+        id: 'm40-norte',
+        name: 'M-40 (Norte, Sanchinarro)',
+        origin: { lat: 40.4850, lng: -3.6880 }, // Sanchinarro
+        destination: { lat: 40.4680, lng: -3.6100 } // Feria de Madrid
+    },
+    {
+        id: 'm45-este',
+        name: 'M-45 (Tramo Este)',
+        origin: { lat: 40.390, lng: -3.600 }, // Conexión A-3
+        destination: { lat: 40.440, lng: -3.565 } // Conexión A-2
+    },
+    {
+        id: 'm50-oeste',
+        name: 'M-50 (Tramo Oeste, Boadilla)',
+        origin: { lat: 40.415, lng: -3.860 }, // Boadilla
+        destination: { lat: 40.470, lng: -3.830 } // Conexión A-6
+    },
+
+    // --- RADIALES (A-1 a A-6) ---
+    {
+        id: 'a1-entrada',
+        name: 'A-1 (Entrada a Pza. Castilla)',
+        origin: { lat: 40.485, lng: -3.675 }, // Cerca de Sanchinarro
+        destination: { lat: 40.465, lng: -3.689 } // Plaza Castilla
+    },
+    {
+        id: 'a2-entrada',
+        name: 'A-2 (Entrada a Av. América)',
+        origin: { lat: 40.4355, lng: -3.6490 }, // Canillejas
+        destination: { lat: 40.4320, lng: -3.6730 } // Av. de América
+    },
+    {
+        id: 'a3-entrada',
+        name: 'A-3 (Entrada a Conde de Casal)',
+        origin: { lat: 40.395, lng: -3.615 }, // Vicálvaro
+        destination: { lat: 40.407, lng: -3.669 } // Conde de Casal
+    },
+    {
+        id: 'a4-entrada',
+        name: 'A-4 (Entrada a C/ Méndez Álvaro)',
+        origin: { lat: 40.315, lng: -3.695 }, // Getafe
+        destination: { lat: 40.390, lng: -3.695 } // Nudo M-30
+    },
+    {
+        id: 'a5-entrada',
+        name: 'A-5 (Entrada a P. Extremadura)',
+        origin: { lat: 40.370, lng: -3.785 }, // Cuatro Vientos
+        destination: { lat: 40.410, lng: -3.730 } // P. de Extremadura
+    },
+    {
+        id: 'a6-entrada',
+        name: 'A-6 (Entrada a Moncloa)',
+        origin: { lat: 40.4630, lng: -3.7530 }, // Puerta de Hierro
+        destination: { lat: 40.4360, lng: -3.7170 } // Moncloa
+    }
+];
 
     // Contenedor del HTML donde irá la lista
     const container = document.getElementById('traffic-list-container');
