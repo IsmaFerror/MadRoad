@@ -1,3 +1,6 @@
+/* =========================================
+   1. ESTILOS GENERALES Y RESET
+   ========================================= */
 body {
     background-color: #121212; 
     color: #E0E0E0; 
@@ -6,12 +9,18 @@ body {
     padding: 20px;
 }
 
+/* =========================================
+   2. HEADER Y LOGO (Versión PC)
+   ========================================= */
 header {
     text-align: center;
     border-bottom: 2px solid #4A148C;
     margin-bottom: 30px;
     position: relative;
+    
+    /* Altura mínima para PC (para que quepa el logo grande) */
     min-height: 150px; 
+    
     padding-top: 20px;
     padding-bottom: 20px;
     box-sizing: border-box; 
@@ -22,9 +31,55 @@ header {
 
 h1 {
     color: #9B59B6;
-     margin: 0;
+    margin: 0;
 }
 
+#logo {
+    position: absolute;
+    left: 20px; 
+    top: 50%;   
+    transform: translateY(-50%); 
+    height: 110px; /* Tamaño grande para PC */
+}
+
+/* =========================================
+   3. BARRA DE CONTROLES (Buscador + Hora)
+   ========================================= */
+.controls-container {
+    max-width: 600px;
+    margin: 0 auto 20px auto; 
+    padding: 0 15px; 
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#search-input {
+    background-color: #1E1E1E; 
+    border: 1px solid #4A148C; 
+    border-radius: 8px;
+    padding: 12px;
+    color: #E0E0E0; 
+    font-size: 1rem;
+    outline: none; 
+    transition: box-shadow 0.3s ease;
+}
+
+#search-input:focus {
+    box-shadow: 0 0 8px #4A148C; 
+}
+
+#last-updated {
+    text-align: right;
+    font-size: 0.85rem;
+    color: #9E9E9E; 
+    margin: 0;
+    font-style: italic;
+}
+
+/* =========================================
+   4. LISTA DE TRÁFICO (TARJETAS)
+   ========================================= */
 .traffic-list {
     max-width: 600px;
     margin: 0 auto;
@@ -38,10 +93,18 @@ h1 {
     margin-bottom: 12px;
     display: flex;
     align-items: center;
-    font-size: 1.2rem;
-    font-weight: bold;
+    
+    /* Efectos de hover y click */
+    cursor: pointer; 
+    transition: transform 0.2s ease, background-color 0.2s;
 }
 
+.highway-item:hover {
+    transform: translateY(-2px); 
+    background-color: #252525; 
+}
+
+/* Puntos de color */
 .status-dot {
     height: 18px;
     width: 18px;
@@ -51,50 +114,50 @@ h1 {
     flex-shrink: 0; 
 }
 
+.status-dot.green { background-color: #28a745; box-shadow: 0 0 8px #28a745; }
+.status-dot.yellow { background-color: #ffc107; box-shadow: 0 0 8px #ffc107; }
+.status-dot.red { background-color: #dc3545; box-shadow: 0 0 8px #dc3545; }
+.status-dot.grey { background-color: #555; }
 
-.status-dot.green {
-    background-color: #28a745;
-    box-shadow: 0 0 8px #28a745;
+/* --- TEXTOS DENTRO DE LA TARJETA (ACTUALIZADO) --- */
+
+/* Contenedor que agrupa Nombre y Detalle */
+.highway-item .name-container {
+    display: flex;
+    flex-direction: column; /* Uno debajo del otro */
+    flex-grow: 1; /* Empuja la condición a la derecha */
+    margin-right: 10px; 
 }
 
-.status-dot.yellow {
-    background-color: #ffc107;
-    box-shadow: 0 0 8px #ffc107;
-}
-
-.status-dot.red {
-    background-color: #dc3545;
-    box-shadow: 0 0 8px #dc3545;
-}
-
+/* Nombre Principal (Ej: M-30 Norte) */
 .highway-item .name {
-    flex-grow: 1; 
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: #E0E0E0;
 }
 
+/* Detalle del tramo (Ej: Manoteras -> Ilustración) */
+.highway-item .details {
+    font-size: 0.85rem; 
+    color: #9B59B6; /* Color morado para diferenciar */
+    margin-top: 2px;
+    font-weight: normal;
+}
+
+/* Estado (Ej: Fluido) */
 .highway-item .condition {
     font-size: 1rem;
     font-weight: normal;
     color: #9E9E9E;
 }
 
-.status-dot.grey {
-    background-color: #555;
-}
-
-#logo {
-    position: absolute;
-    /* (El 'left' y 'top' que querías) */
-    left: 20px; /* A 20px de la izquierda (igual que el menú a la derecha) */
-    top: 50%;   /* 50% desde arriba del header */
-    transform: translateY(-50%); /* Lo sube la mitad de su altura (centrado perfecto) */
-
-    height: 110px; /* Tu tamaño para PC */
-}
-
+/* =========================================
+   5. MENÚ HAMBURGUESA
+   ========================================= */
 .menu-container {
     position: absolute;
-    right: 30px; /* Ajustado desde 20px para que no esté tan pegado */
-    z-index: 100; /* Asegura que esté por encima */
+    right: 30px; 
+    z-index: 100; 
     top: 50%;
     transform: translateY(-50%);
 }
@@ -116,9 +179,7 @@ h1 {
     transition: all 0.3s ease-in-out;
 }
 
-#menu-toggle {
-    display: none;
-}
+#menu-toggle { display: none; }
 
 .menu-dropdown {
     position: absolute;
@@ -128,18 +189,13 @@ h1 {
     border: 1px solid #4A148C;
     border-radius: 8px;
     white-space: nowrap;
-   
     opacity: 0;
     visibility: hidden;
     transform: translateY(-10px); 
     transition: all 0.3s ease;
 }
 
-.menu-dropdown ul {
-    list-style: none;
-    margin: 0;
-    padding: 10px;
-}
+.menu-dropdown ul { list-style: none; margin: 0; padding: 10px; }
 
 .menu-dropdown li a {
     display: block;
@@ -151,116 +207,93 @@ h1 {
     transition: background-color 0.2s;
 }
 
-.menu-dropdown li a:hover {
-    background-color: #4A148C; 
-}
+.menu-dropdown li a:hover { background-color: #4A148C; }
 
-
-
+/* Animaciones del menú */
 #menu-toggle:checked ~ .menu-dropdown {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
 }
 
-
 #menu-toggle:checked + .menu-icon span:nth-child(1) {
     transform: rotate(45deg) translate(5px, 6px);
 }
-
 #menu-toggle:checked + .menu-icon span:nth-child(2) {
     opacity: 0; 
 }
-
 #menu-toggle:checked + .menu-icon span:nth-child(3) {
     transform: rotate(-45deg) translate(5px, -6px);
 }
 
-/* --- Estilos del Footer --- */
-
+/* =========================================
+   6. FOOTER
+   ========================================= */
 .site-footer {
-    border-top: 1px solid #4A148C; /* Línea separadora */
+    border-top: 1px solid #4A148C; 
     margin-top: 50px;
     padding-top: 20px;
     text-align: center;
-    color: #9E9E9E; /* Gris claro, como la condición */
+    color: #9E9E9E; 
     font-size: 0.9rem;
 }
 
-.site-footer p {
-    margin: 5px 0;
-}
-
+.site-footer p { margin: 5px 0; }
 .site-footer a {
-    color: #9B59B6; /* Morado de los títulos */
+    color: #9B59B6; 
     text-decoration: none;
     font-weight: bold;
 }
+.site-footer a:hover { text-decoration: underline; }
 
-.site-footer a:hover {
-    text-decoration: underline;
-}
-
-
-
-/* Esto se aplica SOLO en pantallas de 768px o menos
-  (tablets y móviles)
-*/
+/* =========================================
+   7. MÓVIL (RESPONSIVE DESIGN)
+   ========================================= */
 @media (max-width: 768px) {
 
     header {
-        /* Reducimos la altura del header en móvil */
+        /* Reducimos altura en móvil */
         min-height: 80px; 
-        
-        /* Reducimos el padding para que coincida */
         padding-top: 10px;
         padding-bottom: 10px;
     }
 
     h1 {
-        /* Hacemos el título un poco más pequeño para balancear */
         font-size: 1.3rem; 
-
-        /* Aumentamos el padding izquierdo para el logo de 50px */
-        padding-left: 90px;
-        
+        /* Espacio a la izquierda para el logo y a la derecha para el menú */
+        padding-left: 90px; 
         padding-right: 50px;
         box-sizing: border-box;
     }
 
- 
     #logo {
         left: 15px;
-        
-        /* Aumentamos el tamaño, 35px era muy poco */
+        /* Logo más pequeño en móvil */
         height: 55px; 
-        
         top: 50%; 
         transform: translateY(-50%);
     }
 
     .menu-container {
-        /* Acercamos el menú al borde */
         right: 15px;
     }
     
-   
     .traffic-list {
-        /* Evitamos que la lista ocupe todo el ancho */
         max-width: 95%;
         margin: 0 auto;
     }
     
     .highway-item {
-        
         font-size: 1rem;
         padding: 12px 15px;
     }
 
+    /* Ajustes de texto para móvil */
+    .highway-item .name { font-size: 1rem; }
+    .highway-item .details { font-size: 0.75rem; white-space: normal; }
+    
     .highway-item .condition {
-        /* Reducimos el texto de "Fluido", etc. */
         font-size: 0.9rem;
-        /* Evitamos que el texto "Congestionada" se parta en dos líneas */
         white-space: nowrap;
     }
 }
